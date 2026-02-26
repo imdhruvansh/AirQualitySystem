@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  backend:
+    volumes:
+      - ./backend:/app
+    environment:
+      FLASK_ENV: development
+      FLASK_DEBUG: 1
+    command: python app.py
+
+  frontend:
+    build:
+      context: ./frontend
+      target: build
+    volumes:
+      - ./frontend/src:/app/src
+    ports:
+      - "3000:3000"
+    command: npm start
+    stdin_open: true
+    tty: true
