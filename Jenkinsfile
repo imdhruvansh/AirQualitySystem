@@ -3,27 +3,28 @@ pipeline {
 
     stages {
 
-        stage('Clone Repository') {
+        stage('Clone Repo') {
             steps {
+                echo 'Cloning repository'
                 git 'https://github.com/imdhruvansh/AirQualitySystem.git'
+            }
+        }
+
+        stage('Check Python') {
+            steps {
+                sh 'python3 --version'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                sh 'pip install -r requirements.txt'
-            }
-        }
-
-        stage('Run Tests') {
-            steps {
-                sh 'echo Running basic tests'
+                sh 'pip3 install -r requirements.txt'
             }
         }
 
         stage('Run Application') {
             steps {
-                sh 'python app.py'
+                sh 'python3 app.py'
             }
         }
 
@@ -31,10 +32,10 @@ pipeline {
 
     post {
         success {
-            echo 'Air Quality System Build Successful'
+            echo 'Pipeline Successful'
         }
         failure {
-            echo 'Build Failed'
+            echo 'Pipeline Failed'
         }
     }
 }
