@@ -28,7 +28,7 @@ pipeline {
             echo 'Air Quality System Pipeline Successful'
         }
         failure {
-            echo 'Build Failed'
+            echo 'Pipeline Failed'
         }
     }
 }
