@@ -3,13 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Clone Repo') {
-            steps {
-                echo 'Cloning repository'
-                git 'https://github.com/imdhruvansh/AirQualitySystem.git'
-            }
-        }
-
         stage('Check Python') {
             steps {
                 sh 'python3 --version'
@@ -32,10 +25,10 @@ pipeline {
 
     post {
         success {
-            echo 'Pipeline Successful'
+            echo 'Air Quality System Pipeline Successful'
         }
         failure {
-            echo 'Pipeline Failed'
+            echo 'Build Failed'
         }
     }
 }
